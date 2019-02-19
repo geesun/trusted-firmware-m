@@ -70,8 +70,8 @@
 #define FLASH_AREA_IMAGE_1_OFFSET       (0x000000)
 #define FLASH_AREA_IMAGE_1_SIZE         (FLASH_PARTITION_SIZE)
 
-#define FLASH_AREA_IMAGE_SCRATCH_OFFSET (0x38000)
-#define FLASH_AREA_IMAGE_SCRATCH_SIZE   (2 * FLASH_PARTITION_SIZE)
+#define FLASH_AREA_IMAGE_SCRATCH_OFFSET (0x58000)
+#define FLASH_AREA_IMAGE_SCRATCH_SIZE    0x2000   //(2 * FLASH_PARTITION_SIZE)
 
 /* Maximum number of status entries supported by the bootloader. */
 #define BOOT_STATUS_MAX_ENTRIES         ((2 * FLASH_PARTITION_SIZE) / \
@@ -81,10 +81,10 @@
 #define BOOT_MAX_IMG_SECTORS            ((2 * FLASH_PARTITION_SIZE) / \
                                          FLASH_AREA_IMAGE_SECTOR_SIZE)
 
-#define FLASH_SST_AREA_OFFSET           (0x3A000)
-#define FLASH_SST_AREA_SIZE             (0x5000)   /* 20 KB */
+#define FLASH_SST_AREA_OFFSET           (0x3C000)
+#define FLASH_SST_AREA_SIZE             (0x4000)   /* 20 KB */
 
-#define FLASH_NV_COUNTERS_AREA_OFFSET   (0x39000)
+#define FLASH_NV_COUNTERS_AREA_OFFSET   (0x36000)
 #define FLASH_NV_COUNTERS_AREA_SIZE     (0x10)     /* 16 Bytes */
 
 /* Offset and size definition in flash area, used by assemble.py */
@@ -92,7 +92,7 @@
 #define SECURE_IMAGE_MAX_SIZE           0x60000
 
 #define NON_SECURE_IMAGE_OFFSET         0x60000
-#define NON_SECURE_IMAGE_MAX_SIZE       0x80000
+#define NON_SECURE_IMAGE_MAX_SIZE       0x20000
 
 /* Flash device name used by BL2 and SST
  * Name is defined in flash driver file: Driver_Flash.c
