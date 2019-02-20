@@ -42,7 +42,7 @@ void tfm_core_validate_boot_data(void)
     struct shared_data_tlv_header *tlv_header;
 
     tlv_header = (struct shared_data_tlv_header *)BOOT_TFM_SHARED_DATA_BASE;
-
+#if 0
 #ifdef M2351 //CWS Fix me. Add this due to we don't have BL2
     /* Init the share RAM when we don't have BL2 */
     tlv_header->tlv_magic = SHARED_DATA_TLV_INFO_MAGIC;
@@ -70,7 +70,7 @@ void tfm_core_validate_boot_data(void)
     
 
 #endif
-
+#endif
 
 
 
