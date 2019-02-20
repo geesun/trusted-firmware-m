@@ -22,7 +22,7 @@
  * key. For the security of the attestation, it is critical to use a unique key
  * pair and keep the private key is secret.
  *
- * Musca A does not have any available hardware unique key engine, so a
+ * AN519 does not have any available hardware unique key engine, so a
  * software stub has been implemented in this case.
  */
 
