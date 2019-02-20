@@ -139,6 +139,11 @@ static int32_t ARM_Flash_Initialize(ARM_Flash_SignalEvent_t cb_event)
 {
     ARG_UNUSED(cb_event);
     /* Nothing to be done */
+
+    FMC_Open();
+    FMC_ENABLE_AP_UPDATE();
+
+    
     return ARM_DRIVER_OK;
 }
 
@@ -224,8 +229,16 @@ static int32_t ARM_Flash_ProgramData(uint32_t addr, const void *data, uint32_t c
         
             if(j>=4)
             {
-                FMC_Write(start_addr+i/4, u32Data);
+                FMC_Write(start_addr+(i+1-4), u32Data);
+                j = 0;
+                u32Data = 0;
             }
+        }
+
+        if(j)
+        {
+            // This should not happen.
+            while(1);
         }
         
     }
