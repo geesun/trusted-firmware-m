@@ -22,7 +22,21 @@
 #include "Driver_USART.h"
 #include "target_cfg.h"
 
+//CWS
+#if 1
+#define ASSERT_HIGH(X)
+__attribute__((noreturn))
+void exit(int x)
+{
+    while(1);
+}
+
+#else
 #define ASSERT_HIGH(X)  assert(X == ARM_DRIVER_OK)
+#endif
+
+
+
 
 /* Imports USART driver */
 extern ARM_DRIVER_USART TFM_DRIVER_STDIO;

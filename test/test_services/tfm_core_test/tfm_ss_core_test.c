@@ -197,6 +197,18 @@ psa_status_t test_share_redirection(void)
 
 psa_status_t test_peripheral_access(void)
 {
+#ifdef M2351
+    PA_NS->MODE = 5 << 10*2;
+    PA10_NS = 0;
+    PA11_NS = 0;
+
+    if(PA_NS->MODE != (5 << 10*2))
+    {
+        /* Fail to set GPIO */
+        return CORE_TEST_ERRNO_PERIPHERAL_ACCESS_FAILED;
+    }
+
+#else
     struct arm_mps2_fpgaio_t *fpgaio = SEC_MPS2_FPGAIO;
     /* Check read access */
     uint32_t leds = fpgaio->LED;
@@ -209,7 +221,7 @@ psa_status_t test_peripheral_access(void)
         /* Code failed to invert value in peripheral reg */
         return CORE_TEST_ERRNO_PERIPHERAL_ACCESS_FAILED;
     }
-
+#endif
     return CORE_TEST_ERRNO_SUCCESS;
 }
 

@@ -11,6 +11,8 @@
 #system settings file
 if(NOT DEFINED TARGET_PLATFORM)
 	message(FATAL_ERROR "ERROR: TARGET_PLATFORM is not set in command line")
+elseif(${TARGET_PLATFORM} STREQUAL "M2351")
+	set(PLATFORM_CMAKE_FILE "${CMAKE_CURRENT_LIST_DIR}/platform/ext/Nuvoton_M2351.cmake")
 elseif(${TARGET_PLATFORM} STREQUAL "AN521")
 	set(PLATFORM_CMAKE_FILE "${CMAKE_CURRENT_LIST_DIR}/platform/ext/Mps2AN521.cmake")
 elseif(${TARGET_PLATFORM} STREQUAL "AN519")
@@ -35,7 +37,7 @@ set (TFM_LVL 3)
 
 #BL2 bootloader(MCUBoot) related settings
 if(NOT DEFINED BL2)
-	set(BL2 True)
+	set(BL2 False)
 endif()
 
 if(NOT DEFINED MCUBOOT_NO_SWAP)

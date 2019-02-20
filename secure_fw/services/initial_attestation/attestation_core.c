@@ -47,6 +47,7 @@
  */
 __attribute__ ((aligned(4)))
 static uint8_t boot_status[MAX_BOOT_STATUS];
+//CWS need to check "boot_status" initial data for attestation test fail
 
 enum psa_attest_err_t attest_init(void)
 {

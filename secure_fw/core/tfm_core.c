@@ -21,7 +21,8 @@
  * FixMe: describe 'semihosting issue'
  */
 #if defined(__ARMCC_VERSION) && (__ARMCC_VERSION >= 6010050)
-__asm("  .global __ARM_use_no_argv\n");
+// CWS
+//__asm("  .global __ARM_use_no_argv\n");
 #endif
 
 #if defined ( __GNUC__ )

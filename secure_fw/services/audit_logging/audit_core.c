@@ -136,6 +136,7 @@ struct log_vars {
  * \brief Current state variables for the log
  */
 static struct log_vars log_state = {0};
+//CWS need to check "log_state" inital data for audit log test fail
 
 /*!
  * \var global_timestamp

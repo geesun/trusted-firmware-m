@@ -43,6 +43,37 @@ void tfm_core_validate_boot_data(void)
 
     tlv_header = (struct shared_data_tlv_header *)BOOT_TFM_SHARED_DATA_BASE;
 
+#ifdef M2351 //CWS Fix me. Add this due to we don't have BL2
+    /* Init the share RAM when we don't have BL2 */
+    tlv_header->tlv_magic = SHARED_DATA_TLV_INFO_MAGIC;
+    tlv_header->tlv_tot_len = SHARED_DATA_HEADER_SIZE + SHARED_DATA_ENTRY_SIZE(32);
+    {
+        struct shared_data_tlv_entry *entry;
+        //uint8_t *pu8;
+        //int32_t i;
+
+        entry = (struct shared_data_tlv_entry *)(BOOT_TFM_SHARED_DATA_BASE + SHARED_DATA_HEADER_SIZE);
+        entry->tlv_major_type = TLV_MAJOR_IAS;
+        entry->tlv_minor_type = TLV_MINOR_IAS_S_NS_SHA256;
+        entry->tlv_len = SHARED_DATA_ENTRY_SIZE(32);
+
+        entry = (struct shared_data_tlv_entry *)(BOOT_TFM_SHARED_DATA_BASE + SHARED_DATA_HEADER_SIZE);
+        entry->tlv_major_type = TLV_MAJOR_IAS;
+        entry->tlv_minor_type = TLV_MINOR_IAS_S_NS_SHA256;
+        entry->tlv_len = SHARED_DATA_ENTRY_SIZE(32);
+
+
+        //pu8 = (uint8_t *)(BOOT_TFM_SHARED_DATA_BASE + SHARED_DATA_HEADER_SIZE + SHARED_DATA_ENTRY_HEADER_SIZE);
+        //for(i=0;i<32;i++)
+        //   pu8[i] = i+1;
+    }
+    
+
+#endif
+
+
+
+
     /* FixMe: Enhance sanity check of shared memory area, it might be invalid:
      *        - temporal exposure of RAM to non-secure actors
      *        - mismatched addresses
