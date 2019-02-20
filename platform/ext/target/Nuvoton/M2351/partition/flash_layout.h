@@ -104,7 +104,7 @@
  * address instead of the full memory address.
  */
 #define SST_FLASH_AREA_ADDR  FLASH_SST_AREA_OFFSET
-#define SST_SECTOR_SIZE      FLASH_AREA_IMAGE_SECTOR_SIZE*2
+#define SST_SECTOR_SIZE      FLASH_AREA_IMAGE_SECTOR_SIZE
 /* The sectors must be in consecutive memory location */
 #define SST_NBR_OF_SECTORS  (FLASH_SST_AREA_SIZE / SST_SECTOR_SIZE)
 /* Specifies the smallest flash programmable unit in bytes */
