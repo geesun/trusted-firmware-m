@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------------
-# Copyright (c) 2017-2018, Arm Limited. All rights reserved.
+# Copyright (c) 2017-2019, Arm Limited. All rights reserved.
 #
 # SPDX-License-Identifier: BSD-3-Clause
 #
@@ -70,7 +70,7 @@ externalproject_add(${MBEDTLS_TARGET_NAME}
 	#Set mbedtls features
 	CMAKE_ARGS -DENABLE_TESTING=OFF -DENABLE_PROGRAMS=OFF
 	#Enforce our build system's settings.
-	CMAKE_ARGS -DCMAKE_MODULE_PATH=${CMAKE_MODULE_PATH} -DCMAKE_SYSTEM_NAME=${CMAKE_SYSTEM_NAME}
+	CMAKE_ARGS -DCMAKE_MODULE_PATH=${CMAKE_MODULE_PATH} -DCMAKE_SYSTEM_NAME=${CMAKE_SYSTEM_NAME} -DCMAKE_HOST_UNIX=ON
 	#Inherit the build setting of this project
 	CMAKE_ARGS -DCMAKE_BUILD_TYPE=${MBEDTLS_BUILD_TYPE}
 	#C compiler settings
